@@ -21,6 +21,21 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% Add ones to the X data matrix to get A^(1)
+A1 = [ones(m, 1) X];
+
+% calculations for first hidden layer
+Z2 = A1 * Theta1';
+A2 = sigmoid(Z2);
+    %Add ones to the A^(2) matrix
+A2 = [ones(m, 1) A2];
+
+% Calculations for the output layer
+Z3 = A2 * Theta2';
+A3 = sigmoid(Z3);
+
+% Predict the number by taking the max probability
+[max_val,p] = max(A3, [], 2);
 
 
 
